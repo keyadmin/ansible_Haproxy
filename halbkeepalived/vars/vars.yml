@@ -1,0 +1,5 @@
+vm_user: root
+keepalived_ip: 192.168.99.10
+web1_ip: 172.17.0.4
+web2_ip: 172.17.0.5
+web_ip: 172.17.0.4

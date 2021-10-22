@@ -1,0 +1,42 @@
+global_defs{
+   notification_email {
+
+   itkma1998@gmail.com
+
+   support@mydomain.com
+
+}
+
+   notification_email_from itkma1998@gmail.com
+
+   smtp_server localhost
+
+   smtp_connect_timeout 30
+}
+
+#vrrp_script chk_haproxy {
+#    script "/usr/bin/pidof haproxy"
+#    interval 2
+#    weight -2
+#}
+
+vrrp_instance VIP_1 {
+    interface eth0
+    state MASTER
+    priority 102
+    advert_int 1
+    virtual_router_id 100
+    virtual_ipaddress {
+    {{ keepalived_ip }}/16
+  }
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+
+#    track_script {
+#        chk_haproxy
+#    }
+
+#    notify_master /etc/keepalived/master.sh
+}
